@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>View Leave Requests</title>
+    <style>
+     body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #1f86c6;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #ddd;
+        }
+
+.btn {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 5px;
+    border:none;
+    display:inline-block;
+}
+
+.update-btn {
+    background-color: #28a745; 
+}
+
+.delete-btn {
+    background-color: #dc3545; 
+}
+
+.update-btn:hover {
+    background-color: #218838;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+        nav {
+            background-color: #333;
+            padding: 10px 0;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+
+        nav ul li a:hover {
+            background-color: #555;
+        }
+        .nav-logo{
+        color:white;
+        }
+
+        form{
+        display:inline-block;
+        }
+    
+    </style>
+</head>
+
+<body>
+<nav class="navbar">
+        <div class="nav-logo">Admin Dashboard</div>
+        <ul class="nav-links">
+            <li><a th:href="@{/adminDashboard}">Home</a></li>
+            <li><a th:href="@{/adminlogin}">Logout</a></li>
+        </ul>
+    </nav>
+    <h1>Pending Leave Requests</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>User</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="leaveRequest : ${leaveRequests}">
+             <td th:text="${leaveRequest.user.name}"></td>
+                <td th:text="${leaveRequest.startDate}"></td>
+                <td th:text="${leaveRequest.endDate}"></td>
+                <td th:text="${leaveRequest.status}"></td>
+                <td>
+                    <form th:action="@{/leave-requests/{id}/approve(id=${leaveRequest.id})}" method="post" class="action-btn approve-btn">
+                        <button type="submit" class="btn update-btn" >Approve</button>
+                    </form>
+                    <form th:action="@{/leave-requests/{id}/reject(id=${leaveRequest.id})}" method="post" class="action-btn reject-btn">
+                        <button type="submit" class="btn delete-btn">Reject</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

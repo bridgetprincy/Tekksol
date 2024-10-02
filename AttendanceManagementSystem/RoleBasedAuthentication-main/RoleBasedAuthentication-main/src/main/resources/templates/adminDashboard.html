@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+
+.navbar {
+    background-color: #333;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline;
+    margin-left: 1.5rem;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.welcome-section {
+    text-align: center;
+    margin: 2rem auto;
+}
+
+.welcome-section h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.welcome-section p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.card-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 2rem auto;
+    width: 80%;
+}
+
+.card {
+    background-color: #fff;
+    width: 300px;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    color: #666;
+}
+
+.btn {
+    padding: 0.7rem 1.5rem;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.view-btn {
+    background-color: #007bff; /* Blue for View */
+}
+
+.edit-btn {
+    background-color: #28a745; /* Green for Edit */
+}
+
+.btn:hover {
+    opacity: 0.8;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-logo">Admin Dashboard</div>
+        <ul class="nav-links">
+           
+            <li><a th:href="@{/logout}">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Welcome Message -->
+    <section class="welcome-section">
+        <h1>Welcome, Admin!</h1>
+        <p>Manage your employees efficiently from here.</p>
+    </section>
+
+    <!-- Card View for Employee Management -->
+    <div class="card-container">
+        <!-- Card 1: Employee Details -->
+        <div class="card">
+            <h2>Employee Details</h2>
+            <p>View all employee details and manage their records.</p>
+            <a th:href="@{/admin-home}" class="btn view-btn">View Details</a>
+        </div>
+
+        <!-- Card 2: Edit Employee Details -->
+        <div class="card">
+            <h2>Users Leave Request</h2>
+            <p>Approve or Reject employee records easily from here.</p>
+            <a th:href="@{/view-leave-requests}" class="btn edit-btn">Leave Request Details</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Employee</title>
+    <style>
+      
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+        }
+
+        .navbar {
+            background-color: #333;
+            overflow: hidden;
+            padding: 15px;
+        }
+
+        .navbar a {
+            float: left;
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 17px;
+        }
+
+        .navbar a:hover {
+            background-color: #575757;
+            color: white;
+        }
+
+        
+        .form-container {
+            width: 40%;
+            margin: 100px auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-container label {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .form-container input[type="text"], 
+        .form-container input[type="email"],
+         .form-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-container .btn-submit {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.1em;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .form-container .btn-submit:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a th:href="@{/admin-dashboard}">Dashboard</a>
+        <a th:href="@{/admin-home}">View Details</a>
+        <a th:href="@{/logout}">Logout</a>
+    </div>
+
+    <!-- Form Container -->
+    <div class="form-container">
+        <h2>Update Employee Details</h2>
+        <form th:action="@{/users/{id} (id=${user.id})}" th:object = "${user}" method="POST">
+            <label for="firstName">Name:</label>
+            <input type="text" th:field="*{name}" placeholder="Enter first name" required>
+
+           <!--  <label for="lastName">Last Name:</label>
+            <input type="text" th:field="*{lastName}" placeholder="Enter last name" required> -->
+
+            <label for="email">Email:</label>
+            <input type="email" th:field="*{email}" placeholder="Enter email" required>
+            
+            <!-- <label for="password">Password:</label>
+            <input type="password" th:field="*{password}" placeholder="New Password" required /> -->
+
+            <button type="submit" class="btn-submit">Update</button>
+        </form>
+    </div>
+
+</body>
+</html>

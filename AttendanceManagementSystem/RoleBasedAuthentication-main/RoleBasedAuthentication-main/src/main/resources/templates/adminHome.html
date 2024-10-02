@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar and Table</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.navbar {
+    background-color: #333;
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-logo {
+    color: #fff;
+    font-size: 2rem;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    display: inline;
+    margin-left: 1.5rem;
+}
+
+.nav-links a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}
+
+.table-container {
+    width: 80%;
+    margin: 2rem auto;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-table th, .user-table td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.user-table th {
+    background-color: #333;
+    color: #fff;
+}
+
+.user-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+
+.btn {
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.update-btn {
+    background-color: #28a745; /* Green color */
+}
+
+.delete-btn {
+    background-color: #dc3545; /* Red color */
+}
+
+.update-btn:hover {
+    background-color: #218838;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-logo">Admin Dashboard</div>
+        <ul class="nav-links">
+            <li><a th:href="@{/adminDashboard}">Home</a></li>
+            <li><a th:href="@{/logout}">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Table with Users -->
+    <div class="table-container">
+        <h2>Users List</h2>
+        <table class="user-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <!-- <th>Last Name</th> -->
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+               <tr th:each="user : ${users}">
+            <td th:text="${user.name}"></td>
+            <!-- <td th:text="${user.lastName}"></td> -->
+            <td th:text="${user.email}"></td>
+            <td>
+                <a th:href = "@{/users/edit/{id}(id=${user.id})}" class="btn update-btn">Update</a>
+                <a th:href = "@{/users/{id}(id=${user.id})}" class="btn delete-btn">Delete</a>
+            </td>
+        </tr>
+
+               <!--  <tr>
+                    <td>Jane</td>
+                    <td>Smith</td>
+                    <td>jane.smith@example.com</td>
+                    <td>
+                        <a th:href = "@{/users/edit/{id}(id=${user.id})}" class="btn update-btn">Update</a>
+                        <a href="#" class="btn delete-btn">Delete</a>
+                    </td>
+                </tr> -->
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+

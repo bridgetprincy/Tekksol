@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Role Based Auth</title>
+     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+</head>
+
+<!-- <body >
+     <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <h1>Role Based Authentication</h1>
+        </div>
+    </nav>
+    <br><br><br><br><br><br><br>
+    <div class="container">
+    
+    
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+
+             <div th:if="${param.error}">
+                  <div class="alert alert-info">Email or Password entered is Wrong.Please Check and Login Again.</div>
+                </div>
+
+                <h1>Login</h1>
+
+                <form th:action="@{/login}" method="post" 
+                             th:object="${user}">
+                   
+
+
+                    <div class="form-group">
+                        <label class="control-label" for="email"> Email 
+                         </label> <input id="email" class="form-control"
+                            th:field="*{username}" required autofocus="autofocus" 
+                                />
+                    </div>
+                    
+                   
+
+                    <div class="form-group">
+                        <label class="control-label" for="password"> 
+                           Password </label> <input id="password"
+                            class="form-control" type="password" 
+                          th:field="*{password}" required
+                            autofocus="autofocus" />
+                    </div>
+
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary">
+                          Log In </button>
+                        <span>New User? <a href="/" 
+                  th:href="@{/registration}">Register
+                                here</a></span>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div> 
+       
+</body> -->
+<body>
+    <!-- <ul class="menu">
+        <li>
+            <a href="#"><i class="fa-solid fa-user"></i> Login</a>
+            <ul>
+                <li><a href="#"><i class="fa-solid fa-user-tie"></i> Admin</a></li>
+                <li><a href="#"><i class="fa-solid fa-users"></i> Staff</a></li>
+            </ul>
+        </li>
+    </ul> -->
+    <!-- <div class="main"> -->
+        <div class="wrapper">
+            <div class="form-wrapper sign-in">
+                <!-- <div th:if="${param.error}">
+                    <div class="alert alert-info">Email or Password entered is Wrong.Please Check and Login Again.</div>
+                  </div> -->
+                <form th:action="@{/login}" method="post" 
+                             th:object="${user}">
+                    <h2>Sign In</h2>
+                    <div class="input-group">
+                        <input type="text"  th:field="*{username}" required>
+                        <label for=" ">Email</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" th:field="*{password}" required>
+                        <label for=" ">Password</label>
+                    </div>
+                    <div class="remember">
+                        <label><input type="checkbox"> Remember me</label>
+                    </div>
+                    <button type="submit">Sign In</button>
+                    <div class="signUp-link">
+                        <p>Don't have an account?<a  th:href="@{/login}" class="signUpBtn-link"> Sign Up</a></p>
+                    </div>
+                    <div class="social-platform">
+                        <p>Or sign in with</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                            <a href="#"><i class="fa-brands fa-google"></i></a>
+                            <a href="#"><i class="fa-brands fa-twitter"></i></a>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="form-wrapper sign-up">
+                <form th:action="@{/registration}" method="post" 
+                th:object="${user}">
+                    <h2>Sign Up</h2>
+                    <div class="input-group">
+                        <input typr="text" th:field="*{name}" required>
+                        <label for=" ">Username</label>
+                    </div>
+                    <div class="input-group">
+                        <input typr="email" th:field="*{email_id}" required>
+                        <label for=" ">Email</label>
+                    </div>
+                    <div class="input-group">
+                        <input type="password" th:field="*{password}" required>
+                        <label for=" ">Password</label>
+                    </div>
+                    <div>
+                        <div class="label-group">
+                        <label for="role"> 
+                            Role </label> 
+                        
+                            <br>
+                            
+                        <select id="role" th:field="*{role}" class="form-control">
+                            <option value="Select">Select</option>
+                            <option value="USER">USER</option>
+                            <option value="ADMIN">ADMIN</option>
+                                                 </select>
+                                        
+                    </div>
+                    <div class="remember">
+                        <label><input type="checkbox"> I agree to the terms & conditions</label>
+                    </div>
+                    <button type="submit">Sign Up</button>
+                    <div class="signUp-link">
+                        <p>Already have an account?<a 
+                            th:href="@{/login}" class="signInBtn-link"> Sign In</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    <!-- </div> -->
+         <script src="script.js"></script>
+</body>
+</html>
